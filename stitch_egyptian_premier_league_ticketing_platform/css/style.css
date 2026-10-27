@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Egyptian Premier League Matchday Tickets - Master Stylesheet
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #0d131f;
+    color: #dde2f3;
+    font-family: 'Rubik', 'Tajawal', sans-serif;
+  }
+
+  body {
+    overscroll-behavior: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080e1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242a37;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Glowing Effects */
+.glow-primary {
+  box-shadow: 0 0 24px rgba(78, 222, 163, 0.35);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 24px rgba(255, 185, 95, 0.3);
+}
+
+.glow-danger {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(18, 24, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(13, 19, 31, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Interactive SVG Pitch Sectors */
+.sector-path {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sector-path:hover:not([data-sector="second"]) {
+  filter: brightness(1.25);
+  stroke: #4edea3;
+  stroke-width: 2.5;
+}
+
+/* Notification & Toast */
+#global-toast {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* Print Stylesheet for Match Tickets */
+@media print {
+  header, footer, #mobileMenu, #downloadPdfBtn, #sharePassBtn, .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .print-clean {
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+
+  .print-clean * {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  .barcode-container {
+    filter: invert(1);
+  }
+}
